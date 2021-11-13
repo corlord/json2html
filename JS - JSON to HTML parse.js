@@ -3,9 +3,14 @@ const root = document.body;
 
 function eval_json(j_obj, root_node){
     if (Array.isArray(j_obj)){
+        var list_label = root_node.children[0].className        
         for (var j in j_obj){
-            eval_json(j_obj[j], root_node);
+            var element = document.createElement("div");
+            root_node.appendChild(element);
+            element.className = list_label + j
+            eval_json(j_obj[j], element);
         }
+        
     } else {
         build_nodes(j_obj, root_node);
     };
