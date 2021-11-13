@@ -2,12 +2,11 @@ let jOb = JSON.parse(document.body.textContent);
 const root = document.body;
 
 function eval_json(j_obj, root_node){
-    if (Array.isArray(j_obj)){
-        var list_label = root_node.children[0].className        
+    if (Array.isArray(j_obj)){    
         for (var j in j_obj){
             var element = document.createElement("div");
             root_node.appendChild(element);
-            element.className = list_label + j
+            element.className = "list_item" + j
             eval_json(j_obj[j], element);
         }
         
